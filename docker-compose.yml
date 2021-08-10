@@ -1,0 +1,22 @@
+version: '3.7'
+
+networks:
+    core:
+
+services:
+
+    dbchallenge:
+        image: postgres:12
+        container_name: dbchallenge
+        hostname: dbchallenge
+        environment:
+            - POSTGRES_USER=challenge
+            - POSTGRES_PASSWORD=challenge
+            - POSTGRES_DB=challenge
+        volumes:
+            - /home/scpaes/Dev/jungledevs-challenge/volumes/data:/var/lib/postgresql/data
+            - /home/scpaes/Dev/jungledevs-challenge/volumes/initdb:/docker-entrypoint-initdb.d
+        networks:
+            - core
+        ports:
+            - "0.0.0.0:5438:5432"
