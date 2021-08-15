@@ -13,7 +13,6 @@ class AuthennticationUserTestCase(APITestCase):
     def setUp(self) -> None:
         self.user = User.objects.create_user('BB08', password='12345678')
 
-
     def test_user_auth(self):
         """
             User auth test.

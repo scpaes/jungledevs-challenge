@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework.authtoken',
+    'django_filters',
     'admin_honeypot',
     'rest_framework',
     'challengenews'

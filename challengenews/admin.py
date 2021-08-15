@@ -3,15 +3,18 @@ from challengenews.models import *
 
 
 class ArticlesAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title',)}
     list_display = [
         'author',
         'category',
-        'title'
+        'title',
+        'slug'
     ]
     list_display_links = [
         'author',
         'category',
-        'title'
+        'title',
+        'slug'
     ]
     search_fields = ['author', 'title']
 

@@ -11,4 +11,5 @@ urlpatterns = [
     path('control-panel/', admin.site.urls),
     path('api/login/', views.obtain_auth_token),
     path('api/sign-up/', SignUpCreateView.as_view(), name='sing-up'),
+    path('api/', include('challengenews.urls'), name='api')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
