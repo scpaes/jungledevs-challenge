@@ -17,7 +17,7 @@ class ArticleViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
 
 
-class ArticleListView(viewsets.ViewSet):
+class ArticleListView(viewsets.ReadOnlyModelViewSet):
     """
         ViewSet for listing or retrieving articles.
     """
@@ -28,21 +28,9 @@ class ArticleListView(viewsets.ViewSet):
     filterset_fields = ['category', 'slug']
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
 
-    def get_serializer_class(self, request):
-
-        if request.user.is_authenticated:
+    def get_serializer_class(self):
+        if self.action == 'list':
+            return ArticleListSerializer
+        elif self.request.user.is_authenticated:
             return ArticleSerializer
         return ArticleSerializerAnonymousUser
-
-    def list(self, request):
-        # serializer = ArticleSerializer(queryset, many=True)
-        serializer = ArticleListSerializer(queryset, many=True)
-        return Response(serializer.data)
-
-    def retrieve(self, request, pk=None):
-        queryset = self.get_queryset()
-        article = get_object_or_404(queryset, pk=pk)
-        # serializer = ArticleSerializer(article)
-        serializer = self.get_serializer_class(request)
-        serializer = serializer(article)
-        return Response(serializer.data)
