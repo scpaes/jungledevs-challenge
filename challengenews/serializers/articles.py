@@ -15,7 +15,6 @@ class ArticleSerializer(serializers.ModelSerializer):
         fields = '__all__'
         extra_kwargs = {'slug': {'read_only': True}, 'id': {'read_only': True}}
 
-
     def create(self, validated_data):
         author = Authors.objects.create(**validated_data['author'])
         validated_data.pop('author')
@@ -33,3 +32,13 @@ class ArticleSerializerAnonymousUser(ArticleSerializer):
         model = Articles
         exclude = ['body']
         extra_kwargs = {'slug': {'read_only': True}, 'id': {'read_only': True}}
+
+
+class ArticleListSerializer(ArticleSerializer):
+    """
+        Article list serializer
+    """
+
+    class Meta:
+        model = Articles
+        exclude = ['body', 'first_paragraph']
