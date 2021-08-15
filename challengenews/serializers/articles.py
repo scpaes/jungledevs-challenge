@@ -23,3 +23,13 @@ class ArticleSerializer(serializers.ModelSerializer):
 
         return article
 
+
+class ArticleSerializerAnonymousUser(ArticleSerializer):
+    """
+        Article model serializer, Anonymous user request.
+    """
+
+    class Meta:
+        model = Articles
+        exclude = ['body']
+        extra_kwargs = {'slug': {'read_only': True}, 'id': {'read_only': True}}
