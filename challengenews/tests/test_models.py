@@ -4,6 +4,7 @@ from django.test import TestCase
 
 class ArticlesModelTestCase(TestCase):
     """
+        Teste de unidade.
         Classe de testes para o modelo de Articles.
     """
 
