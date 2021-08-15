@@ -16,8 +16,10 @@ class ArticleSerializer(serializers.ModelSerializer):
         extra_kwargs = {'slug': {'read_only': True}, 'id': {'read_only': True}}
 
     def create(self, validated_data):
-        author = Authors.objects.create(**validated_data['author'])
-        validated_data.pop('author')
+        author = validated_data.pop('author')
+        author, _ = Authors.objects.get_or_create(name=author['name'], defaults = {**author})
+        
+
         article = Articles.objects.create(author=author, **validated_data)
 
         return article

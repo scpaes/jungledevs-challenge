@@ -63,14 +63,14 @@ class ArticlesSerializerTestCase(TestCase):
         """
         data = self.serializer.data
         self.assertEqual(set(data.keys()), set(
-            ['id', 'author', 'category', 'title', 'summary', 'first_paragraph']))
+            ['id', 'author', 'category', 'title', 'summary', 'first_paragraph', 'slug', 'body']))
 
     def test_articles_serializer_fields(self):
         """
         Article serializer fields test.
         """
         data = self.serializer.data
-        self.assertEqual(self.article.author.id, data['author'])
+        self.assertEqual(self.article.author.id, data['author']['id'])
         self.assertEqual(self.article.category, data['category'])
         self.assertEqual(self.article.title, data['title'])
         self.assertEqual(self.article.summary, data['summary'])
