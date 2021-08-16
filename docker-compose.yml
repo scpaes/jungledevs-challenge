@@ -20,3 +20,15 @@ services:
             - core
         ports:
             - "0.0.0.0:5438:5432"
+
+    api:
+        build: .
+        command: python manage.py runserver 0.0.0.0:8000
+        volumes:
+            - /home/scpaes/Dev/jungledevs-challenge:/code
+        networks:
+            - core
+        ports:
+            - "0.0.0.0:8000:8000"
+        depends_on: 
+            - dbchallenge
