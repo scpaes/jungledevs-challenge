@@ -19,6 +19,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework.authtoken',
+    'rest_framework_swagger',
+    'drf_yasg',
     'django_filters',
     'admin_honeypot',
     'rest_framework',
