@@ -3,7 +3,9 @@ Jungle Devs - Django Challenge #001
 
 #### Postman Collection
 
-#### Documentação com swagger `/swagger/`
+#### Documentação com swagger 
+
+Path: `/swagger/`
 
 
 ### Instruções para execução do projeto usando o Docker compose.
