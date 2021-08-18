@@ -22,8 +22,9 @@ Utilizando o servidor padrão de desenvolvimento do django.
 Utilizando o gunicorn e o nginx
 - Verificar as variaveis de ambiente, contidas no arquivo `.env.prod`
 - Fazer o build da imagem e executar o container.
-`$ docker-compose -f docker-compose.prod.yml up -d --build`
 
-
+    ```sh
+    $ docker-compose up -d --build
+    ```
 #### Secret key
 - Gerar as chaves e informar nos arquivos .env.dev e .env.prod 
